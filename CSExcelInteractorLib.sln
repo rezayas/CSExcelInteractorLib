@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSExcelInteractorLib", "CSExcelInteractorLib\CSExcelInteractorLib.csproj", "{8204C151-8F37-4662-8630-9861AC63E31C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8204C151-8F37-4662-8630-9861AC63E31C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8204C151-8F37-4662-8630-9861AC63E31C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8204C151-8F37-4662-8630-9861AC63E31C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8204C151-8F37-4662-8630-9861AC63E31C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAA97BCE-2026-454C-BFF1-84C1D9B6C23F}
+	EndGlobalSection
+EndGlobal

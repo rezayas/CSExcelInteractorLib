@@ -117,6 +117,7 @@ namespace ExcelInteractorLib
         {
             return (Excel.Range)_xlActiveWorkSheet.get_Range(cellName, cellName);
         }
+        
         public Excel.Range GetCell(int rowIndex, int colIndex, enumRangeDirection direction)
         {
             Excel.Range myRange1 = GetCell(rowIndex, colIndex);
@@ -388,8 +389,22 @@ namespace ExcelInteractorLib
                 i += 1;
             }
             return values;
-        }   
+        }
 
+        public string[] ReadStringRangeFromActiveSheet(int firstRowIndex, int firstColIndex, int lastRowIndex, int lastColIndex)
+        {
+            // get the range
+            Excel.Range myRange = GetRange(firstRowIndex, firstColIndex, lastRowIndex, lastColIndex);
+
+            int i = 0;
+            string[] values = new string[myRange.Count];
+            foreach (Excel.Range thisRange in myRange.Cells)
+            {
+                values[i] = (string)thisRange.Value2;
+                i += 1;
+            }
+            return values;
+        }
         public string[] ReadStringRangeFromActiveSheet(int rowIndex, int colIndex, enumRangeDirection direction)
         {
             // get the range
@@ -504,6 +519,18 @@ namespace ExcelInteractorLib
 
             GetRange(rowStartIndex, colStartIndex, rowStartIndex + values.Length - 1, colStartIndex).Value2 = colValues;
         }
+        public void WriteToColumn(string[] values, string cellName, int rowOffset, int colOffset)
+        {
+            // convert column into matrix
+            string[,] colValues = new string[values.Length, 1];
+            for (int i = 0; i < values.Length; i++)
+                colValues[i, 0] = values[i];
+
+            int rowStartIndex = RowIndex(cellName) + rowOffset;
+            int colStartIndex = ColIndex(cellName) + colOffset;
+
+            GetRange(rowStartIndex, colStartIndex, rowStartIndex + values.Length - 1, colStartIndex).Value2 = colValues;
+        }
         public void WriteToColumn(double[] values, int rowStartIndex, int colStartIndex)
         {
             // convert column into matrix
@@ -531,6 +558,8 @@ namespace ExcelInteractorLib
 
             GetRange(rowStartIndex, colStartIndex, rowStartIndex + values.Length - 1, colStartIndex).Value2 = colValues;
         }
+
+
         public void WriteToMatrix(double[,] values, int rowStartIndex, int colStartIndex)
         {
             GetRange(rowStartIndex, colStartIndex, rowStartIndex + values.GetLength(0) - 1, colStartIndex + values.GetLength(1)).Value2 = values;
